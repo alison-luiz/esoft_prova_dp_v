@@ -16,7 +16,7 @@ import { DeleteOneTeamService } from './services/delete-one-team.service';
     CreateOneTeamService,
     FindOneTeamService,
     UpdateOneTeamService,
-    DeleteOneTeamService
+    DeleteOneTeamService,
   ],
 })
 export class TeamsModule {}

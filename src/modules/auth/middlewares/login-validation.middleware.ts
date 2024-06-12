@@ -6,7 +6,7 @@ import {
 import { validate } from 'class-validator';
 import { NextFunction, Request, Response } from 'express';
 import { LoginRequestBody } from '../models/login-request-body';
-  
+
 @Injectable()
 export class LoginValidationMiddleware implements NestMiddleware {
   async use(req: Request, res: Response, next: NextFunction) {

@@ -19,7 +19,7 @@ import { TeamsModule } from './modules/teams/teams.module';
     }),
     AuthModule,
     UsersModule,
-    TeamsModule
+    TeamsModule,
   ],
   controllers: [],
   providers: [
