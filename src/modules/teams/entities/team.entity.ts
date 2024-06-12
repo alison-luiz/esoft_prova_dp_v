@@ -1,35 +1,34 @@
-import { IsNotEmpty, IsNumber, IsString } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('teams')
 export class Team {
   @PrimaryGeneratedColumn('uuid')
-  id: string
+  id: string;
 
   @Column()
   @IsNotEmpty()
   @IsString()
-  name: string
+  name: string;
 
   @Column()
   @IsNotEmpty()
   @IsString()
-  abbreviation: string
+  abbreviation: string;
 
   @Column()
   @IsString()
-  slug: string
+  slug: string;
 
   @Column()
   @IsString()
-  nickname: string
+  nickname: string;
 
   @Column()
   @IsString()
-  shield: string
+  shield: string;
 
-  @Column()
-  @IsNotEmpty()
+  @Column({ nullable: true })
   @IsNumber()
-  external_id: number
+  external_id: number;
 }

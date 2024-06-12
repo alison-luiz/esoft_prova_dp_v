@@ -1,26 +1,33 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { Team } from '../entities/team.entity';
-import { FindOneTeamService } from './find-one-team.service';
+import { Repository } from 'typeorm';
 import { AppError } from '@/shared/utils/appError.exception';
 
 @Injectable()
-export class DeleteOneTeamService {
+export class FindManyTeamService {
   constructor(
     @InjectRepository(Team)
     private readonly teamRepository: Repository<Team>,
-    private readonly findOneTeamService: FindOneTeamService,
   ) {}
 
-  async execute(id: string): Promise<void> {
+  async execute(): Promise<Team[] | undefined> {
     try {
-      await this.findOneTeamService.execute(id);
-      await this.teamRepository.delete(id);
+      const teams = await this.teamRepository.find();
+
+      if (!teams) {
+        throw new AppError({
+          id: 'TEAMS_NOT_FOUND',
+          message: 'Teams not found',
+          status: HttpStatus.NOT_FOUND,
+        });
+      }
+
+      return teams;
     } catch (error) {
       throw new AppError({
-        id: 'ERROR_DELETE_ONE_TEAM',
-        message: 'Error to delete one team',
+        id: 'ERROR_FIND_MANY_TEAM',
+        message: 'Error to find many teams',
         status: HttpStatus.BAD_REQUEST,
       });
     }
