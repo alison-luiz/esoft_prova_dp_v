@@ -9,6 +9,7 @@ export class CreateTeamDto {
   @IsNotEmpty()
   @IsString()
   name: string;
+  name: string;
 
   @ApiProperty({
     example: 'SAN',
@@ -17,12 +18,14 @@ export class CreateTeamDto {
   @IsNotEmpty()
   @IsString()
   abbreviation: string;
+  abbreviation: string;
 
   @ApiProperty({
     example: 'santos',
     description: 'The slug of the team',
   })
   @IsString()
+  slug: string;
   slug: string;
 
   @ApiProperty({
@@ -31,14 +34,19 @@ export class CreateTeamDto {
   })
   @IsString()
   nickname: string;
+  nickname: string;
 
   @ApiProperty({
+    example:
+      'https://s.glbimg.com/es/sde/f/organizacoes/escudo_default_65x65.png',
+    description: 'The shield of the team',
     example:
       'https://s.glbimg.com/es/sde/f/organizacoes/escudo_default_65x65.png',
     description: 'The shield of the team',
   })
   @IsNotEmpty()
   @IsString()
+  shield: string;
   shield: string;
 
   @ApiProperty({
@@ -47,5 +55,6 @@ export class CreateTeamDto {
   })
   @IsOptional()
   @IsNumber()
+  external_id: number;
   external_id: number;
 }
