@@ -28,8 +28,7 @@ export class Team {
   @IsString()
   shield: string;
 
-  @Column()
-  @IsNotEmpty()
+  @Column({ nullable: true })
   @IsNumber()
   external_id: number;
 }
