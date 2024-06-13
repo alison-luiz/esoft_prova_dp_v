@@ -7,15 +7,6 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
 import { FindManyCartolaApi } from './services/find-many-cartola-api.service';
