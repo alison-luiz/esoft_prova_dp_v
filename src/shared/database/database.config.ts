@@ -1,3 +1,4 @@
+import { Log } from '@/modules/logs/entities/log.entity';
 import { Team } from '@/modules/teams/entities/team.entity';
 import { User } from '@/modules/users/entities/user.entity';
 import { ConfigService } from '@nestjs/config';
@@ -12,7 +13,7 @@ export class DatabaseConfig {
       ssl: false,
       useUTC: true,
       type: 'postgres',
-      entities: [User, Team],
+      entities: [User, Team, Log],
       synchronize: true,
     };
   }

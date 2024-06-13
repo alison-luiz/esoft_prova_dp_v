@@ -12,7 +12,7 @@ export class CreateOneTeamService {
     private readonly teamRepository: Repository<Team>,
   ) {}
 
-  async execute(team: CreateTeamDto): Promise<Team> {
+  async execute(team: CreateTeamDto, createdBy: string): Promise<Team> {
     const teamAlreadyExists = await this.teamRepository.findOne({
       where: {
         name: team.name,
@@ -26,8 +26,11 @@ export class CreateOneTeamService {
       });
     }
     try {
-      const createdTeam = await this.teamRepository.save(team);
-      return createdTeam;
+      const newTeam = this.teamRepository.create({
+        ...team,
+        created_by: createdBy,
+      });
+      return await this.teamRepository.save(newTeam);
     } catch (error) {
       throw new AppError({
         id: 'ERROR_TO_CREATE_TEAM',
