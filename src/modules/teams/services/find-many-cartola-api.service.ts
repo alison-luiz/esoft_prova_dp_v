@@ -37,7 +37,7 @@ export class FindManyCartolaApi {
             external_id: team?.id,
           };
           teams.push(createTeam);
-          await this.createOneTeamService.execute(createTeam);
+          await this.createOneTeamService.execute(createTeam, 'cartola-api');
         }
       }
       await queryRunner.commitTransaction();

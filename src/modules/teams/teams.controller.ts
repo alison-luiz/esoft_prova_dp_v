@@ -6,7 +6,9 @@ import {
   Patch,
   Param,
   Delete,
+  Req,
 } from '@nestjs/common';
+import { Request } from 'express';
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
 import { FindManyCartolaApi } from './services/find-many-cartola-api.service';
@@ -43,8 +45,11 @@ export class TeamsController {
   }
 
   @Post()
-  createOne(@Body() createTeamDto: CreateTeamDto) {
-    return this.createOneTeamService.execute(createTeamDto);
+  createOne(@Req() req: Request, @Body() createTeamDto: CreateTeamDto) {
+    return this.createOneTeamService.execute(
+      createTeamDto,
+      (req as any).user.id,
+    );
   }
 
   @Patch(':id')
