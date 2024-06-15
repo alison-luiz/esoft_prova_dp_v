@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Team } from '../entities/team.entity';
 import { Repository } from 'typeorm';
 import { CreateTeamDto } from '../dto/create-team.dto';
-import { AppError } from '@/shared/utils/appError.exception';
+import { AppError } from '../../../shared/utils/appError.exception';
 
 @Injectable()
 export class CreateOneTeamService {

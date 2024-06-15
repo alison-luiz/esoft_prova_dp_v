@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { Team } from '../entities/team.entity';
 import { FindOneTeamService } from './find-one-team.service';
 import { UpdateTeamDto } from '../dto/update-team.dto';
-import { AppError } from '@/shared/utils/appError.exception';
+import { AppError } from '../../../shared/utils/appError.exception';
 
 @Injectable()
 export class UpdateOneTeamService {
