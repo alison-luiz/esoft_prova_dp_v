@@ -2,7 +2,7 @@ import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Team } from '../entities/team.entity';
 import { Repository } from 'typeorm';
-import { AppError } from '@/shared/utils/appError.exception';
+import { AppError } from '../../../shared/utils/appError.exception';
 
 @Injectable()
 export class FindManyTeamService {

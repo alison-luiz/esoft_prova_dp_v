@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { HttpStatus, Injectable } from '@nestjs/common';
 import axios from 'axios';
 import { CreateOneTeamService } from './create-one-team.service';
-import { AppError } from '@/shared/utils/appError.exception';
+import { AppError } from '../../../shared/utils/appError.exception';
 import { CreateTeamDto } from '../dto/create-team.dto';
 import { Config } from '../entities/config.entity';
 

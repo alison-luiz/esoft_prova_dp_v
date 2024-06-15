@@ -2,7 +2,7 @@ import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Log } from '@/modules/logs/entities/log.entity';
+import { Log } from '../../modules/logs/entities/log.entity';
 
 @Injectable()
 export class ExecutionTimeMiddleware implements NestMiddleware {
@@ -32,9 +32,6 @@ export class ExecutionTimeMiddleware implements NestMiddleware {
       }
 
       await this.logRepository.save(log);
-      console.log(
-        `Request para rota: ${req.originalUrl} demorou ${duration}ms`,
-      );
     });
     next();
   }
