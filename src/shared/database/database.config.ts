@@ -16,9 +16,9 @@ export class DatabaseConfig {
       useUTC: true,
       type: 'postgres',
       entities: [User, Team, Log, Config],
-      synchronize: true,
+      synchronize: false,
       connectTimeoutMS: 30000,
-      migrationsRun: true,
+      migrationsRun: false,
       migrations: [Migrations1718484039104],
     };
   }

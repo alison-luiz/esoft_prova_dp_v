@@ -3,7 +3,7 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from '../../../src/app.module';
 
-describe('Teams e2e' , () => {
+describe('Teams e2e', () => {
   let app: INestApplication;
   let token: string;
 
@@ -33,8 +33,6 @@ describe('Teams e2e' , () => {
       .set('Authorization', `Bearer ${token}`)
       .expect(200);
 
-      expect(response.body).toBeDefined();
-
+    expect(response.body).toBeDefined();
   });
-
 });

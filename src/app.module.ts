@@ -15,6 +15,7 @@ import { TeamsModule } from './modules/teams/teams.module';
 import { LogsModule } from './modules/logs/logs.module';
 import { ExecutionTimeMiddleware } from './shared/middleware/execution-time.middleware';
 import { TeamsController } from './modules/teams/teams.controller';
+import { DatabaseService } from './shared/database/database.service';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { TeamsController } from './modules/teams/teams.controller';
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
     },
+    DatabaseService,
   ],
 })
 export class AppModule implements NestModule {
