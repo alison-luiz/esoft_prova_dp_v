@@ -31,6 +31,8 @@ export class ExecutionTimeMiddleware implements NestMiddleware {
         log.user_id = null;
       }
 
+      if (log.user_id === null) return
+
       await this.logRepository.save(log);
     });
     next();
