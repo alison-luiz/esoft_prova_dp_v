@@ -11,13 +11,13 @@ export class Team {
   @Column()
   abbreviation: string;
 
-  @Column()
+  @Column({ nullable: true })
   slug: string;
 
-  @Column()
+  @Column({ nullable: true })
   nickname: string;
 
-  @Column()
+  @Column({ nullable: true })
   shield: string;
 
   @Column({ nullable: true })

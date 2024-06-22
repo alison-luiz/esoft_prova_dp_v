@@ -1,10 +1,10 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateTeamDto {
   @ApiProperty({
     example: 'Santos',
-    description: 'The name of the team',
+    description: 'Nome para cadastro do time.',
   })
   @IsNotEmpty()
   @IsString()
@@ -12,38 +12,40 @@ export class CreateTeamDto {
 
   @ApiProperty({
     example: 'SAN',
-    description: 'The abbreviation of the team',
+    description: 'Abreviação do nome do time.',
   })
   @IsNotEmpty()
   @IsString()
   abbreviation: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: 'santos',
-    description: 'The slug of the team',
+    description: 'Slug do nome do time.',
   })
   @IsString()
+  @IsOptional()
   slug: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: 'Peixe',
-    description: 'The nickname of the team',
+    description: 'Apelido do time.',
   })
   @IsString()
+  @IsOptional()
   nickname: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example:
       'https://s.glbimg.com/es/sde/f/organizacoes/escudo_default_65x65.png',
-    description: 'The shield of the team',
+    description: 'Escudo do time.',
   })
-  @IsNotEmpty()
   @IsString()
+  @IsOptional()
   shield: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: 1,
-    description: 'The external id of the team',
+    description: 'ID externo do time.',
   })
   @IsOptional()
   @IsNumber()

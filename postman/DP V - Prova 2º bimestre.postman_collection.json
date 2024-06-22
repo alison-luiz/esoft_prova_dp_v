@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"first_name\": \"Alison\",\r\n    \"last_name\": \"Silva\",\r\n    \"email\": \"alison_luiz@outlook.com.br\",\r\n    \"password\": \"senha123\"\r\n}",
+							"raw": "{\r\n    \"first_name\": \"João\",\r\n    \"last_name\": \"Silva\",\r\n    \"email\": \"joão.silva@gmail.com\",\r\n    \"password\": \"senha123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -44,7 +44,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -54,7 +55,8 @@
 									" let jsonData = pm.response.json();\r",
 									"pm.environment.set(\"token\", jsonData.access_token);"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -63,7 +65,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"alison_luiz@outlook.com.br\",\r\n    \"password\": \"senha123\"\r\n}",
+							"raw": "{\r\n    \"email\": \"joão.silva@gmail.com\",\r\n    \"password\": \"senha123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -91,7 +93,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -101,7 +104,8 @@
 									" let jsonData = pm.response.json();\r",
 									"pm.environment.set(\"token\", jsonData.access_token);"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -120,7 +124,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"first_name\": \"Alison\",\r\n    \"last_name\": \"Luiz\",\r\n    \"email\": \"alison_luiz@outlook.com.br\",\r\n    \"password\": \"mudar123\"\r\n}",
+							"raw": "{\r\n    \"first_name\": \"João\",\r\n    \"last_name\": \"Silva\",\r\n    \"email\": \"joão.silva@gmail.com\",\r\n    \"password\": \"mudar123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -146,7 +150,7 @@
 			"name": "Times",
 			"item": [
 				{
-					"name": "Seed - Buscar API",
+					"name": "Seed - Buscar API Cartola",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -189,12 +193,38 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/teams",
+							"raw": "{{base_url}}/teams?page=1&limit=10&search=Santos",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"teams"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": "Santos"
+								},
+								{
+									"key": "orderBy",
+									"value": "name",
+									"description": "name | abbreviation | slug | nickname",
+									"disabled": true
+								},
+								{
+									"key": "orderDirection",
+									"value": "asc",
+									"description": "asc | desc",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -324,6 +354,65 @@
 							"path": [
 								"teams",
 								"9082d58a-3a68-4844-9378-427c59c04441"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Logs",
+			"item": [
+				{
+					"name": "Meus Logs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/logs?page=1&limit=10&method=GET",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"logs"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "method",
+									"value": "GET",
+									"description": "GET | POST | PUT | PATCH | DELETE"
+								},
+								{
+									"key": "orderBy",
+									"value": "created_at",
+									"description": "created_at | status | duration | method | route",
+									"disabled": true
+								},
+								{
+									"key": "orderDirection",
+									"value": "asc",
+									"description": "asc | desc",
+									"disabled": true
+								}
 							]
 						}
 					},

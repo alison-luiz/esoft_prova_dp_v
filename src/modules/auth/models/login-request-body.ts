@@ -3,15 +3,15 @@ import { IsEmail, IsString } from 'class-validator';
 
 export class LoginRequestBody {
   @ApiProperty({
-    example: 'email@example.com.br',
-    description: 'The email address of the user.',
+    example: 'joão.silva@gmail.com',
+    description: 'Email para login do usuário.',
   })
   @IsEmail()
   email: string;
 
   @ApiProperty({
     example: 'senha123',
-    description: 'The password of the user.',
+    description: 'Senha para login do usuário.',
   })
   @IsString()
   password: string;

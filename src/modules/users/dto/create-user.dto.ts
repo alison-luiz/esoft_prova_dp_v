@@ -3,22 +3,22 @@ import { IsEmail, IsString, MaxLength, MinLength } from 'class-validator';
 
 export class CreateUserDto {
   @ApiProperty({
-    example: 'Alison',
-    description: 'The first name of the user.',
+    example: 'João',
+    description: 'Primeiro nome do usuário.'
   })
   @IsString()
   first_name: string;
 
   @ApiProperty({
     example: 'Silva',
-    description: 'The last name of the user.',
+    description: 'Sobrenome do usuário.'
   })
   @IsString()
   last_name: string;
 
   @ApiProperty({
-    example: 'alison_luiz@outlook.com.br',
-    description: 'The email address of the user.',
+    example: 'joão.silva@gmail.com',
+    description: 'Email para cadastro do usuário.'
   })
   @IsEmail()
   @IsString()
@@ -27,7 +27,7 @@ export class CreateUserDto {
   @ApiProperty({
     example: 'senha123',
     description:
-      'The password for the user. Should be between 4 and 20 characters.',
+      'Senha para cadastro do usuário. Deve conter no mínimo 4 caracteres e no máximo 20.'
   })
   @IsString()
   @MinLength(4)

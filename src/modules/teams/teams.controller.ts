@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Req,
+  Query,
 } from '@nestjs/common';
 import { Request } from 'express';
 import { CreateTeamDto } from './dto/create-team.dto';
@@ -17,7 +18,10 @@ import { FindManyTeamService } from './services/find-many-team.service';
 import { CreateOneTeamService } from './services/create-one-team.service';
 import { UpdateOneTeamService } from './services/update-one-team.service';
 import { DeleteOneTeamService } from './services/delete-one-team.service';
+import { FindManyTeamQueryDto } from './dto/find-many-team.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Times')
 @Controller('teams')
 export class TeamsController {
   constructor(
@@ -30,22 +34,22 @@ export class TeamsController {
   ) {}
 
   @Get('/seed')
-  seed() {
+  async seed() {
     return this.findManyCartolaAPI.execute();
   }
 
   @Get()
-  findAll() {
-    return this.findManyTeamService.execute();
+  async findAll(@Query() query: FindManyTeamQueryDto) {
+    return this.findManyTeamService.execute(query);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     return this.findOneTeamService.execute(id);
   }
 
   @Post()
-  createOne(@Req() req: Request, @Body() createTeamDto: CreateTeamDto) {
+  async createOne(@Req() req: Request, @Body() createTeamDto: CreateTeamDto) {
     return this.createOneTeamService.execute(
       createTeamDto,
       (req as any).user.id,
@@ -53,12 +57,12 @@ export class TeamsController {
   }
 
   @Patch(':id')
-  updateOne(@Param('id') id: string, @Body() updateTeamDto: UpdateTeamDto) {
+  async updateOne(@Param('id') id: string, @Body() updateTeamDto: UpdateTeamDto) {
     return this.updateOneTeamService.execute(id, updateTeamDto);
   }
 
   @Delete(':id')
-  deleteOne(@Param('id') id: string) {
+  async deleteOne(@Param('id') id: string) {
     return this.deleteOneTeamService.execute(id);
   }
 }

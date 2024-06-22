@@ -14,7 +14,7 @@ import { LocalAuthGuard } from './guards/local-auth.guard';
 import { AuthRequest } from './models/auth-request';
 import { LoginRequestBody } from './models/login-request-body';
 
-@ApiTags('auth')
+@ApiTags('Autenticação')
 @UseInterceptors(ClassSerializerInterceptor)
 @Controller()
 export class AuthController {
