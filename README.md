@@ -50,7 +50,9 @@ Com o servidor rodando, é preciso popular as informações iniciais do nosso ba
 
 Para isso basta acessar a rota abaixo, e executá-la.
 
- - Seed - Buscar API Cartola - http://localhost:3000/teams/seed  
+ - Seed - Buscar API Cartola - http://localhost:3000/teams/seed
+
+![image](https://github.com/alison-luiz/esoft_prova_dp_v/assets/89758128/d08995dc-167b-429f-a803-f69c516de03a)
 
 ## Testes 🕵️
 
@@ -74,3 +76,6 @@ Environment
 Também contamos com uma documentação feita pelo [swagger](https://swagger.io/) que está disponibilizada na seguinte rota da API:  
 
 http://localhost:3000/docs/
+
+![image](https://github.com/alison-luiz/esoft_prova_dp_v/assets/89758128/b075eee5-5bdc-40a0-aebe-fce455086c47)
+
