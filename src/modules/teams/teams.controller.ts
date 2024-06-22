@@ -19,9 +19,10 @@ import { CreateOneTeamService } from './services/create-one-team.service';
 import { UpdateOneTeamService } from './services/update-one-team.service';
 import { DeleteOneTeamService } from './services/delete-one-team.service';
 import { FindManyTeamQueryDto } from './dto/find-many-team.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Times')
+@ApiBearerAuth()
 @Controller('teams')
 export class TeamsController {
   constructor(

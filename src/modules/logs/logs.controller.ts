@@ -2,9 +2,10 @@ import { Controller, Get, Query, Req } from "@nestjs/common";
 import { LogsService } from "./logs.service";
 import { Request } from "express";
 import { FindManyLogsQueryDto } from "./dto/find-many-logs.dto";
-import { ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags('Sistema de Logs')
+@ApiBearerAuth()
 @Controller('logs')
 export class LogsController {
   constructor(
