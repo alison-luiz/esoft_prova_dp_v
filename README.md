@@ -17,6 +17,7 @@ Tecnologias utilizadas neste projeto:
 ## Dependências 📦
 
 [Docker](https://www.docker.com/)
+
 [PostgreSQL](https://www.postgresql.org/)
 
 ## Iniciando o projeto 🚩
@@ -71,6 +72,7 @@ $  yarn test:autocannon
 Foi disponibilizado os arquivos de environment e collection da ferramenta [postman](https://www.postman.com/) contendo todos os endpoints feitos neste projeto.
 
 [Collection](https://github.com/alison-luiz/esoft_prova_dp_v/blob/main/postman/DP%20V%20-%20Prova%202%C2%BA%20bimestre.postman_collection.json)
+
 [Environment](https://github.com/alison-luiz/esoft_prova_dp_v/blob/main/postman/DP%20V%20-%20Prova%202%C2%BA%20bimestre.postman_environment.json)  
 
 Também contamos com uma documentação feita pelo [swagger](https://swagger.io/) que está disponibilizada na seguinte rota da API:  
