@@ -1,4 +1,4 @@
-import { QueryTemplateDto } from "@/shared/dtos/query-template.dto"
+import { QueryTemplateDto } from "../../../shared/dtos/query-template.dto"
 import { Transform } from "class-transformer";
 import { IsOptional, IsString } from "class-validator";
 import { Team } from "../entities/team.entity";
@@ -12,6 +12,14 @@ export class FindManyTeamQueryDto extends QueryTemplateDto {
   @IsString()
   @IsOptional()
   search?: string;
+
+  @ApiPropertyOptional({
+    example: 'uuid',
+    description: 'Campo para busca de registros por uuid.'
+  })
+  @IsString()
+  @IsOptional()
+  createdBy?: string;
 
   @ApiPropertyOptional({
     example: 'name',

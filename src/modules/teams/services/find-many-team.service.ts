@@ -26,6 +26,12 @@ export class FindManyTeamService {
         );
       }
 
+      if (findManyTeamQueryDto.createdBy) {
+        queryBuilder.andWhere('team.created_by = :createdBy', {
+          createdBy: findManyTeamQueryDto.createdBy,
+        });
+      }
+
       if (findManyTeamQueryDto.orderBy) {
         queryBuilder.orderBy(`team.${findManyTeamQueryDto.orderBy}`, findManyTeamQueryDto.orderDirection || 'ASC');
       } else {

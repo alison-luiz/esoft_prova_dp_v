@@ -1,4 +1,4 @@
-import { QueryTemplateDto } from "@/shared/dtos/query-template.dto"
+import { QueryTemplateDto } from "../../../shared/dtos/query-template.dto"
 import { Log } from "../entities/log.entity";
 import { IsOptional, IsString } from "class-validator";
 import { Transform } from "class-transformer";

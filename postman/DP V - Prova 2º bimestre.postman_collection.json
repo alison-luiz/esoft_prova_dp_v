@@ -193,7 +193,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/teams?page=1&limit=10&search=Santos",
+							"raw": "{{base_url}}/teams?page=1&limit=10",
 							"host": [
 								"{{base_url}}"
 							],
@@ -211,7 +211,14 @@
 								},
 								{
 									"key": "search",
-									"value": "Santos"
+									"value": "Santos",
+									"disabled": true
+								},
+								{
+									"key": "createdBy",
+									"value": "afe49622-2c2f-44c9-b022-3cfad2522f12",
+									"description": "UUID",
+									"disabled": true
 								},
 								{
 									"key": "orderBy",

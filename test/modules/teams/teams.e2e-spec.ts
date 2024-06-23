@@ -4,14 +4,15 @@ import * as request from 'supertest';
 import { AppModule } from '../../../src/app.module';
 
 describe('Teams e2e', () => {
-  const createTeamsMock = {
-    name: 'Santos FC Teste',
-    abbreviation: 'SAN',
-    slug: 'santos-fc',
-    nickname: 'Peixe',
-    shield:
-      'https://upload.wikimedia.org/wikipedia/commons/1/1c/Santos_logo.svg',
-  };
+  function createTeamsMock() {
+    return {
+      name: `Test Team ${new Date().getTime()}`,
+      abbreviation: 'TST',
+      slug: 'test-team',
+      nickname: 'Testers',
+      shield: 'https://upload.wikimedia.org/wikipedia/commons/6/6f/FC_Barcelona_logo.svg',
+    };
+  }
 
   let app: INestApplication;
   let token: string;
@@ -39,23 +40,36 @@ describe('Teams e2e', () => {
   });
 
   afterAll(async () => {
-    const getTeamsResponse = await request(app.getHttpServer())
-      .get('/teams')
-      .set('Authorization', `Bearer ${token}`)
-      .expect(200);
+    const pageSize = 100;
+    let currentPage = 1;
+    let totalTeams = 0;
+    let lastPage = 1;
 
-    const teams = getTeamsResponse.body.filter(
-      (team) => team.created_by === userId,
-    );
+    do {
+      const getTeamsResponse = await request(app.getHttpServer())
+        .get('/teams')
+        .query({ page: currentPage, limit: pageSize, createdBy: userId })
+        .set('Authorization', `Bearer ${token}`)
+        .expect(200);
 
-    await Promise.all(
-      teams.map((team) =>
-        request(app.getHttpServer())
-          .delete(`/teams/${team.id}`)
-          .set('Authorization', `Bearer ${token}`)
-          .expect(200),
-      ),
-    );
+        const teams = getTeamsResponse.body.data || [];
+        const meta = getTeamsResponse.body.meta || {};
+        totalTeams = meta.total || 0;
+        lastPage = meta.last_page || 1;
+
+        if (teams.length > 0) {
+          await Promise.all(
+            teams.map((team) =>
+              request(app.getHttpServer())
+                .delete(`/teams/${team.id}`)
+                .set('Authorization', `Bearer ${token}`)
+                .expect(200),
+            ),
+          );
+        }
+
+        currentPage++;
+    } while (currentPage <= lastPage);
   });
 
   it('Should fetch the list of teams', async () => {
@@ -68,7 +82,7 @@ describe('Teams e2e', () => {
   });
 
   it('Should search for the list of teams with at least one team', async () => {
-    const body = createTeamsMock;
+    const body = createTeamsMock();
 
     const createResponse = await request(app.getHttpServer())
       .post('/teams')
@@ -79,12 +93,15 @@ describe('Teams e2e', () => {
 
     const getTeams = await request(app.getHttpServer())
       .get('/teams')
+      .query({ search: body.name })
       .set('Authorization', `Bearer ${token}`)
       .expect(200);
     expect(getTeams.body).toBeDefined();
-    expect(getTeams.body.length).toBeGreaterThan(0);
 
-    const team = getTeams.body.find((t) => t.name === createTeamsMock.name);
+    const teams = getTeams.body.data || [];
+    expect(teams.length).toBeGreaterThan(0);
+
+    const team = teams.find((t) => t.name === body.name);
     expect(team).toBeDefined();
 
     const deleteResponse = await request(app.getHttpServer())
@@ -95,7 +112,7 @@ describe('Teams e2e', () => {
   });
 
   it('Should search for a team by id', async () => {
-    const body = createTeamsMock;
+    const body = createTeamsMock();
 
     const createResponse = await request(app.getHttpServer())
       .post('/teams')
@@ -120,7 +137,7 @@ describe('Teams e2e', () => {
   });
 
   it('Should create a team', async () => {
-    const body = createTeamsMock;
+    const body = createTeamsMock();
 
     const response = await request(app.getHttpServer())
       .post('/teams')
@@ -138,7 +155,7 @@ describe('Teams e2e', () => {
   });
 
   it('Should update a team', async () => {
-    const body = createTeamsMock;
+    const body = createTeamsMock();
 
     const createResponse = await request(app.getHttpServer())
       .post('/teams')
@@ -152,7 +169,7 @@ describe('Teams e2e', () => {
     const updateResponse = await request(app.getHttpServer())
       .patch(`/teams/${team.id}`)
       .set('Authorization', `Bearer ${token}`)
-      .send(createTeamsMock)
+      .send(createTeamsMock())
       .expect(200);
     expect(updateResponse.body).toBeDefined();
 
@@ -164,7 +181,7 @@ describe('Teams e2e', () => {
   });
 
   it('Should delete a team', async () => {
-    const body = createTeamsMock;
+    const body = createTeamsMock();
 
     const createResponse = await request(app.getHttpServer())
       .post('/teams')
