@@ -70,12 +70,11 @@ $  yarn test:autocannon
 
 Foi disponibilizado os arquivos de environment e collection da ferramenta [postman](https://www.postman.com/) contendo todos os endpoints feitos neste projeto.
 
-Collection
-Environment  
+[Collection](https://github.com/alison-luiz/esoft_prova_dp_v/blob/main/postman/DP%20V%20-%20Prova%202%C2%BA%20bimestre.postman_collection.json)
+[Environment](https://github.com/alison-luiz/esoft_prova_dp_v/blob/main/postman/DP%20V%20-%20Prova%202%C2%BA%20bimestre.postman_environment.json)  
 
 Também contamos com uma documentação feita pelo [swagger](https://swagger.io/) que está disponibilizada na seguinte rota da API:  
 
 http://localhost:3000/docs/
 
 ![image](https://github.com/alison-luiz/esoft_prova_dp_v/assets/89758128/b075eee5-5bdc-40a0-aebe-fce455086c47)
-
