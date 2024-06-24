@@ -4,14 +4,14 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install --legacy-peer-deps
+RUN yarn install --legacy-peer-deps
 
 COPY . .
 
-RUN cp .env.example .env
+RUN cp .env.prod .env
 
-RUN npm run build
+RUN yarn run build
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start:prod"]
+CMD ["yarn", "run", "start:prod"]

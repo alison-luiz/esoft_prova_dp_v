@@ -6,8 +6,8 @@
 - Andre Fragalli Vassoler - RA: 22012716-2
 - Felipe Cesar Tomazoti de Souza - RA: 22019977-2
 
- ___  
- 
+---
+
 Este é um projeto de avaliação do segundo bimestre da matéria Desafio Profissional V, onde é feito uma busca em API externa consumindo ao menos 50 itens para popular a base de dados.
 
 Tecnologias utilizadas neste projeto:
@@ -24,7 +24,11 @@ Tecnologias utilizadas neste projeto:
 
 ```bash
 $  git clone https://github.com/alison-luiz/esoft_prova_dp_v
-```  
+```
+
+```bash
+$  cd esoft_prova_dp_v
+```
 
 #### 1. Usar o docker-compose.yml para compilar o projeto e iniciá-lo (na pasta raiz)
 
@@ -36,7 +40,7 @@ $  docker compose up --build
 
 #### 2. Usar o gerenciador de pacotes [Yarn](https://yarnpkg.com/) para executar o backend em modo de desenvolvimento
 
-#### Obs: Para iniciar no modo de desenvolvimento, fazer uma cópia do `.env.example` para `.env`, e preencher a informação da conexão com banco de dados.
+#### Obs: Para iniciar no modo de desenvolvimento, fazer uma cópia do `.env.dev` para `.env`, e preencher a informação da conexão com banco de dados.
 
 **Backend 🌐**
 
@@ -51,7 +55,7 @@ Com o servidor rodando, é preciso popular as informações iniciais do nosso ba
 
 Para isso basta acessar a rota abaixo, e executá-la.
 
- - Seed - Buscar API Cartola - http://localhost:3000/teams/seed
+- Seed - Buscar API Cartola - http://localhost:3000/teams/seed
 
 ![image](https://github.com/alison-luiz/esoft_prova_dp_v/assets/89758128/d08995dc-167b-429f-a803-f69c516de03a)
 
@@ -60,7 +64,11 @@ Para isso basta acessar a rota abaixo, e executá-la.
 #### Para executar os testes e2e e autocannon, primeiro rode o projeto. (passo 1 ou 2)
 
 Para rodar a série de testes feitos no backend, você pode digitar o comando abaixo.
-Obs.: Importante semear o banco de dados para os testes de carga
+
+Atenção:
+
+- Importante semear o banco de dados para os testes de carga serem mais precisos.
+- Se estiver rodando em modo produção (docker compose) os testes devem ser executados por dentro do container.
 
 ```bash
 $  yarn test:e2e
@@ -73,9 +81,9 @@ Foi disponibilizado os arquivos de environment e collection da ferramenta [postm
 
 [Collection](https://github.com/alison-luiz/esoft_prova_dp_v/blob/main/postman/DP%20V%20-%20Prova%202%C2%BA%20bimestre.postman_collection.json)
 
-[Environment](https://github.com/alison-luiz/esoft_prova_dp_v/blob/main/postman/DP%20V%20-%20Prova%202%C2%BA%20bimestre.postman_environment.json)  
+[Environment](https://github.com/alison-luiz/esoft_prova_dp_v/blob/main/postman/DP%20V%20-%20Prova%202%C2%BA%20bimestre.postman_environment.json)
 
-Também contamos com uma documentação feita pelo [swagger](https://swagger.io/) que está disponibilizada na seguinte rota da API:  
+Também contamos com uma documentação feita pelo [swagger](https://swagger.io/) que está disponibilizada na seguinte rota da API:
 
 http://localhost:3000/docs/
 

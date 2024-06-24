@@ -5,7 +5,7 @@ require('dotenv').config();
 
 async function run() {
   try {
-    const baseURL = process.env.BASE_URL || 'http://localhost:3000';
+    const baseURL = process.env.BASE_URL;
     const loginURL = `${baseURL}/login`;
     const teamsURL = `${baseURL}/teams`;
 
